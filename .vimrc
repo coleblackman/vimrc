@@ -17,7 +17,7 @@ Plug 'skywind3000/asyncrun.vim'
 
 Plug 'vimwiki/vimwiki'
 
-"vimrc improvements
+"vimrc improvementsj
 Plug 'tpope/vim-vinegar'
 
 Plug 'dense-analysis/ale'
@@ -48,3 +48,53 @@ Plug 'itchyny/lightline.vim'
 "Tpope vim-commentary - gcc to comment out a line. gc to comment the target of
 "a motion (such as gcap for a paragraph)
 Plug 'tpope/vim-commentary'
+
+" Replaces netrw, may not be necessary - use g - h to toggle hidden files in
+" netrw, use d to add a new directory, use % to create a new file at current
+" location, use vim +Ex from bash/zsh to open netrw in current directory
+" Plug 'preservim/nerdtree'
+
+call plug#end()
+
+set termguicolors
+syntax enable
+colorscheme rigel
+set laststatus=2
+set noshowmode
+
+let g:livepreview_previewer = 'skim'
+"let g:deoplete#enable_at_startup = 1
+let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+let g:vimtex_view_general_options = '-r @line @pdf @tex'
+let g:vimtex_view_general_options_latexmk = '-r 1'
+let g:deoplete#enable_at_startup = 1
+
+"let g:vimwiki_list = [{'path': '~/vimwiki/',
+"                      \ 'syntax': 'markdown', 'ext': '.md'}]
+
+
+"start with nerdtree open if vim is invoked without any files
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+let g:netrw_browse_split = 1
+
+
+filetype plugin on
+
+set statusline+=%F
+set ttimeoutlen=5
+
+
+" Put plugins and dictionaries in this dir (also on Windows)
+let vimDir = '$HOME/.vim'
+let &runtimepath.=','.vimDir
+
+" Keep undo history across sessions by storing it in a file
+if has('persistent_undo')
+    let myUndoDir = expand(vimDir . '/undodir')
+    " Create dirs
+    call system('mkdir ' . vimDir)
+    call system('mkdir ' . myUndoDir)
+    let &undodir = myUndoDir
+    set undofile
+endif
