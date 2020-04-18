@@ -10,12 +10,28 @@ set mouse=n
 colorscheme nord
 call plug#begin()
 
+"LATEX support
+Plug 'lervag/vimtex'
+
 Plug 'skywind3000/asyncrun.vim'
 
 Plug 'vimwiki/vimwiki'
 
+"vimrc improvements
+Plug 'tpope/vim-vinegar'
+
+Plug 'dense-analysis/ale'
+
+
+
+Plug 'francoiscabrol/ranger.vim'
+" may be useful to do something like: alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+
 " Trims unnecessary spaces, required for plasticboy
 Plug 'godlygeek/tabular'
+
+" https://vimawesome.com/plugin/instant-markdown-vim
+Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 
 " Markdown syntax highlighing support
 "Plug 'https://github.com/plasticboy/vim-markdown'
@@ -24,34 +40,11 @@ Plug 'godlygeek/tabular'
 Plug 'Rigellute/rigel'
 
 " A Vim Plugin for Lively Previewing Pandoc PDF Output - :LLPStartPreview
-Plug 'ragon000/vim-pandoc-live-preview', { 'for': ['md', 'pandoc'] }
+"Plug 'ragon000/vim-pandoc-live-preview', { 'for': ['md', 'pandoc'] }
 
 " Colored bar replacing mode display
 Plug 'itchyny/lightline.vim'
 
-" Replaces netrw, may not be necessary - use g - h to toggle hidden files in
-" netrw, use d to add a new directory, use % to create a new file at current
-" location, use vim +Ex from bash/zsh to open netrw in current directory
-" Plug 'preservim/nerdtree'
-
-call plug#end()
-
-set termguicolors
-syntax enable
-colorscheme rigel
-set laststatus=2
-set noshowmode
-
-let g:livepreview_previewer = 'skim'
-
-"let g:vimwiki_list = [{'path': '~/vimwiki/',
-"                      \ 'syntax': 'markdown', 'ext': '.md'}]
-
-
-"start with nerdtree open if vim is invoked without any files
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-let g:netrw_browse_split = 1
-
-set statusline+=%F
-set ttimeoutlen=5
+"Tpope vim-commentary - gcc to comment out a line. gc to comment the target of
+"a motion (such as gcap for a paragraph)
+Plug 'tpope/vim-commentary'
