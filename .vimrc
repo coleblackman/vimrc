@@ -1,4 +1,7 @@
 set background=light
+set guifont=Lucida_Console:h19
+set number
+set relativenumber
 set noshowmode
 syntax on
 set nocompatible
@@ -12,6 +15,12 @@ call plug#begin()
 
 "LATEX support
 Plug 'lervag/vimtex'
+
+Plug 'vim-airline/vim-airline-themes'
+
+Plug 'Yggdroot/indentLine'
+
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
 Plug 'ayu-theme/ayu-vim'
 
@@ -33,7 +42,7 @@ Plug 'takac/vim-hardtime'
 
 Plug 'vimwiki/vimwiki'
 
-"vimrc improvementsj
+"vimrc improvements
 Plug 'tpope/vim-vinegar'
 
 Plug 'dense-analysis/ale'
@@ -77,6 +86,8 @@ set laststatus=2
 set noshowmode
 
 let g:livepreview_previewer = 'skim'
+let g:netrw_liststyle = 3
+
 let g:hardtime_default_on = 1
 "let g:deoplete#enable_at_startup = 1
 let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
@@ -117,5 +128,11 @@ let g:instant_markdown_autostart = 0
 
 
 let g:hardtime_default_on = 1
-let ayucolor="light"
-colorscheme ayu
+
+
+set t_Co=256
+set cursorline
+colorscheme onehalflight
+let g:airline_theme='onehalflight'
+"let ayucolor="mirage"
+"colorscheme ayu
