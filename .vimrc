@@ -1,3 +1,5 @@
+set background=light
+set noshowmode
 syntax on
 set nocompatible
 filetype plugin indent on
@@ -6,14 +8,28 @@ set shell=bash\ -i
 " set backspace=indent,eol,starta
 set confirm
 set mouse=n
-
-colorscheme nord
 call plug#begin()
 
 "LATEX support
 Plug 'lervag/vimtex'
 
+Plug 'ayu-theme/ayu-vim'
+
+Plug 'dhruvasagar/vim-table-mode'
+
+Plug 'junegunn/goyo.vim'
+
+Plug 'mbbill/undotree'
+
+Plug 'wookayin/imagepaste.vim'
+
+Plug 'cocopon/iceberg.vim'
+
 Plug 'skywind3000/asyncrun.vim'
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+
+Plug 'takac/vim-hardtime'
 
 Plug 'vimwiki/vimwiki'
 
@@ -56,22 +72,20 @@ Plug 'tpope/vim-commentary'
 
 call plug#end()
 
-set termguicolors
 syntax enable
-colorscheme rigel
 set laststatus=2
 set noshowmode
 
 let g:livepreview_previewer = 'skim'
+let g:hardtime_default_on = 1
 "let g:deoplete#enable_at_startup = 1
 let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
 let g:vimtex_view_general_options = '-r @line @pdf @tex'
 let g:vimtex_view_general_options_latexmk = '-r 1'
 let g:deoplete#enable_at_startup = 1
 
-"let g:vimwiki_list = [{'path': '~/vimwiki/',
-"                      \ 'syntax': 'markdown', 'ext': '.md'}]
-
+let g:vimwiki_list = [{'path': '~/Google\ Drive\ \(coleblax@gmail.com\)/VimWiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
 
 "start with nerdtree open if vim is invoked without any files
 "autocmd StdinReadPre * let s:std_in=1
@@ -98,3 +112,10 @@ if has('persistent_undo')
     let &undodir = myUndoDir
     set undofile
 endif
+
+let g:instant_markdown_autostart = 0
+
+
+let g:hardtime_default_on = 1
+let ayucolor="light"
+colorscheme ayu
